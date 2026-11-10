@@ -1,0 +1,11 @@
+# Python virtual environment
+.venv/
+
+# Cell libraries, downloaded again by the script on first run (~40 MB)
+libs/
+
+# Yosys scratch files, reports and mapped netlists, regenerated on every run
+work/
+
+# Python cache
+__pycache__/

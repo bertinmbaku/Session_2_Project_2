@@ -1,0 +1,36 @@
+// Hand-built gate-level PRESENT S-box (31 gates). Same function as present_sbox.
+module present_sbox_hand (input wire [3:0] x, output wire [3:0] y);
+  wire x0 = x[0], x1 = x[1], x2 = x[2], x3 = x[3];
+  wire n0 = ~x0;
+  wire n1 = ~x1;
+  wire n2 = ~x2;
+  wire n3 = ~x3;
+  wire a0 = x1 & x0;
+  wire a1 = x2 & n1;
+  wire a2 = x1 & n0;
+  wire o0 = x1 | x0;
+  wire o20 = x2 | x0;
+  wire t = x3 ^ x0;
+  wire y0 = t ^ a1;
+  wire q1 = ~(x2 & n0);
+  wire b1 = x3 & q1;
+  wire b2 = n3 & a2;
+  wire m1 = b1 | b2;
+  wire c = n2 & a0;
+  wire y1 = m1 ^ c;
+  wire d1 = x3 & x1;
+  wire d2 = n3 & n2;
+  wire m2a = d1 | d2;
+  wire e1 = x3 & o20;
+  wire e2 = n3 & a0;
+  wire m2b = e1 | e2;
+  wire y2 = m2a ^ m2b;
+  wire f = x2 | n1;
+  wire g = n0 & f;
+  wire y30 = a0 | g;
+  wire y31 = n2 & o0;
+  wire h1 = n3 & y30;
+  wire h2 = x3 & y31;
+  wire y3 = h1 | h2;
+  assign y = {y3, y2, y1, y0};
+endmodule

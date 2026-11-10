@@ -1,0 +1,4 @@
+design,hand_GE_textbook
+present_sbox,41.0
+xor_rot32,64.0
+present_round,784.0
